@@ -1,721 +1,985 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#17070d">
-<title>Nuestro primer aniversario ❤️ | Juan & Valeria</title>
+<meta name="theme-color" content="#10040a">
+<meta name="description" content="Una película de amor creada por Juan para Valeria. Nuestro primer aniversario.">
+<title>Una historia llamada nosotros | Juan & Valeria ❤️</title>
 
 <style>
 :root {
-  --bg: #10070b;
-  --panel: #210b14;
-  --red: #e52d50;
-  --rose: #ff8ca0;
-  --gold: #f5cda6;
-  --white: #fff0ec;
+  --black:#090408;
+  --wine:#260814;
+  --red:#a51235;
+  --hot:#ff315d;
+  --pink:#ff9caf;
+  --gold:#f6d5a4;
+  --cream:#fff0ed;
+  --line:#d44a6b66;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  color: var(--white);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.85;
+  overflow-x:hidden;
+}
+button{font:inherit;cursor:pointer}
+img{max-width:100%}
+button:focus-visible,a:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:4px;
+}
+::selection{background:#e52d50;color:white}
+#cinemaLights{
+  position:fixed;inset:0;pointer-events:none;z-index:-2;
   background:
-    radial-gradient(ellipse at top, #601528 0%, #240914 43%, #090609 100%);
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.8;
+    radial-gradient(ellipse at 50% -10%,#a5123540,transparent 60%),
+    radial-gradient(ellipse at 0% 50%,#5e0b2830,transparent 45%),
+    radial-gradient(ellipse at 100% 90%,#6c173027,transparent 45%);
 }
-button { cursor: pointer; font: inherit; }
-img { max-width: 100%; }
-.wrap { width: min(900px, 92%); margin: auto; }
-.center { text-align: center; }
-section { scroll-margin-top: 20px; }
+#stars{
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  opacity:.35;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%,#fff,transparent),
+    radial-gradient(2px 2px at 80% 30%,#ffb8c7,transparent),
+    radial-gradient(1px 1px at 45% 60%,#fff,transparent),
+    radial-gradient(1px 1px at 90% 80%,#fff,transparent),
+    radial-gradient(2px 2px at 25% 90%,#ffccd6,transparent);
+  background-size:180px 180px;
+  animation:stars 12s linear infinite alternate;
+}
+@keyframes stars{to{transform:translateY(-15px);opacity:.65}}
+.wrap{width:min(900px,92%);margin:auto}
+.center{text-align:center}
+.gold{color:var(--gold)}
+.pink{color:var(--pink)}
+.muted{color:#e6bdc8}
+.hidden{display:none!important}
+.kicker{
+  color:var(--gold);font:10px Arial,sans-serif;
+  letter-spacing:.24em;text-transform:uppercase;
+}
+h1,h2,h3,p{overflow-wrap:anywhere}
+h1{
+  font-weight:normal;
+  font-size:clamp(3rem,12vw,6.4rem);
+  line-height:1.02;
+  margin:22px 0;
+}
+h1 em{display:block;color:var(--pink);font-weight:normal}
+h2{
+  font-size:clamp(2rem,7vw,3.3rem);
+  line-height:1.16;font-weight:normal;
+  color:var(--gold);margin:15px 0 22px;
+}
+h3{color:var(--pink);font-weight:normal}
+p{margin:0 0 18px}
+.serif-italic{font-style:italic;color:var(--pink)}
+.rule{
+  display:flex;align-items:center;gap:12px;
+  color:var(--pink);justify-content:center;margin:30px 0;
+}
+.rule:before,.rule:after{
+  content:"";height:1px;width:55px;
+  background:linear-gradient(90deg,transparent,#c94b6c);
+}
+.rule:after{transform:rotate(180deg)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:8px;text-align:center;text-decoration:none;
+  border:1px solid #ff9caf99;border-radius:999px;
+  padding:13px 21px;margin:6px 3px;
+  background:linear-gradient(115deg,#8d0c2d,#e32650);
+  color:white;box-shadow:0 7px 25px #bd17352b;
+  font: bold 10px Arial,sans-serif;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:transform .25s,box-shadow .25s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px #e3265050}
+.btn.secondary{background:#160710;border-color:#c94b6c;color:var(--pink)}
+.btn.gold-btn{background:linear-gradient(120deg,#9a642b,#f0ce94);color:#250a12;border-color:#ffe3b6}
+.section{
+  position:relative;margin:24px auto;padding:clamp(24px,6vw,54px);
+  border:1px solid var(--line);border-radius:23px;
+  background:linear-gradient(145deg,#2a0a17f5,#11060cf7 75%);
+  box-shadow:0 20px 55px #0007;
+  overflow:hidden;
+}
+.section:before{
+  content:"";position:absolute;top:0;left:12%;right:12%;height:1px;
+  background:linear-gradient(90deg,transparent,#eaa3b5,transparent);
+}
+.chapter{
+  color:var(--pink);font:10px Arial,sans-serif;
+  letter-spacing:.2em;text-transform:uppercase;
+}
+.hero{
+  min-height:100svh;display:grid;place-items:center;
+  padding:35px 0;
+}
+.hero-card{
+  width:100%;position:relative;overflow:hidden;text-align:center;
+  padding:clamp(28px,7vw,65px) 22px;
+  border:1px solid #d24c6a;
+  background:
+    linear-gradient(#17050bdc,#10040beF),
+    radial-gradient(ellipse at center,#a11139,#16050b);
+  box-shadow:0 0 90px #a5123533,inset 0 0 50px #e42a4c0b;
+  border-radius:5px;
+}
+.hero-card:before,.hero-card:after{
+  content:"✦";position:absolute;color:#f6d5a4;
+  font-size:19px;opacity:.75;
+}
+.hero-card:before{top:16px;left:18px}
+.hero-card:after{bottom:16px;right:18px}
+.film-number{
+  color:#edb9c6;font:10px Arial,sans-serif;
+  letter-spacing:.25em;margin:20px 0;
+}
+.heart{
+  color:var(--hot);font-size:38px;
+  filter:drop-shadow(0 0 12px #ff315d77);
+  animation:heartbeat 1.8s ease-in-out infinite;
+}
+@keyframes heartbeat{50%{transform:scale(1.13)}}
+.hero-bottom{font-size:13px;letter-spacing:.1em;color:var(--gold)}
+.scroll-hint{margin-top:32px;color:#d99aa9;font:10px Arial,sans-serif;letter-spacing:.15em}
+.scroll-hint span{display:block;font-size:20px;animation:bob 1.3s infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
 
-.hero {
-  min-height: 95svh;
-  display: grid;
-  place-items: center;
-  padding: 28px 0;
+/* Línea de tiempo */
+.timeline{position:relative;margin:28px 0 5px;padding-left:25px}
+.timeline:before{
+  content:"";position:absolute;top:6px;bottom:10px;left:5px;width:1px;
+  background:linear-gradient(var(--hot),#f2cda0,transparent);
 }
-.card {
-  width: 100%;
-  padding: clamp(24px, 6vw, 55px);
-  border: 1px solid #a93850;
-  border-radius: 25px;
-  background: linear-gradient(145deg, #310d1c, #12070c);
-  box-shadow: 0 20px 70px #0008, 0 0 30px #e52d5018;
+.moment{position:relative;padding:0 0 27px 15px}
+.moment:before{
+  content:"♥";position:absolute;left:-26px;top:0;
+  color:var(--pink);font-size:12px;
 }
-.kicker {
-  color: var(--gold);
-  font: 11px Arial, sans-serif;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-h1 {
-  font-size: clamp(2.8rem, 10vw, 5.7rem);
-  line-height: 1.03;
-  font-weight: normal;
-  margin: 20px 0;
-}
-h1 em { display: block; color: var(--rose); }
-h2 {
-  color: var(--gold);
-  font-size: clamp(1.8rem, 6vw, 2.8rem);
-  line-height: 1.2;
-  font-weight: normal;
-}
-h3 { color: var(--rose); font-weight: normal; }
-p { margin: 0 0 17px; }
-.sub { max-width: 590px; margin: 0 auto 25px; }
-.heart {
-  font-size: 3rem;
-  color: var(--red);
-  filter: drop-shadow(0 0 14px #ff3358);
-  animation: beat 1.5s infinite;
-}
-@keyframes beat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.13); }
-}
-.btn {
-  display: inline-block;
-  border: 1px solid var(--rose);
-  border-radius: 999px;
-  padding: 12px 20px;
-  margin: 5px 3px;
-  color: white;
-  background: linear-gradient(110deg, #871630, #df3153);
-  font: bold 11px Arial, sans-serif;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  transition: .2s;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn.secondary {
-  background: transparent;
-  color: var(--rose);
-}
-.section {
-  margin: 24px auto;
-  padding: clamp(23px, 5vw, 42px);
-  border: 1px solid #8f2b423b;
-  border-radius: 22px;
-  background: linear-gradient(145deg, #280b17f5, #10070cf7);
-  box-shadow: 0 15px 40px #0005;
-}
-.label {
-  color: var(--rose);
-  font: 11px Arial, sans-serif;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-.divider {
-  text-align: center;
-  color: var(--rose);
-  margin: 25px 0;
-}
-.signature { color: var(--rose); font-style: italic; }
-.hidden { display: none !important; }
+.moment h3{margin:0 0 5px}
 
 /* Galería */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-  margin: 24px 0;
+.gallery{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;margin:26px 0;
 }
-.photo {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ad3c54;
-  border-radius: 16px;
-  background: #17070d;
-  padding: 8px;
+.photo{
+  min-width:0;position:relative;margin:0;padding:7px;
+  border:1px solid #d44a6b88;border-radius:5px;
+  background:linear-gradient(145deg,#541027,#16070d);
+  box-shadow:0 10px 25px #0007;
 }
-.photo img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform .35s;
+.photo:before{
+  content:"✦";position:absolute;right:12px;top:7px;
+  z-index:2;color:var(--gold);font-size:13px;
 }
-.photo img:hover { transform: scale(1.035); }
-.photo figcaption {
-  padding: 8px 3px 2px;
-  text-align: center;
-  color: var(--gold);
-  font-size: .9rem;
+.photo img{
+  display:block;width:100%;aspect-ratio:3/4;
+  object-fit:cover;background:#1c0810;cursor:zoom-in;
+  transition:filter .3s,transform .3s;
 }
-.placeholder {
-  aspect-ratio: 3 / 4;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 12px;
-  color: #e9b8c3;
-  background: linear-gradient(145deg, #481023, #180811);
-  border-radius: 10px;
+.photo img:hover{filter:brightness(1.08);transform:scale(.99)}
+.photo figcaption{
+  padding:11px 5px 7px;text-align:center;
+  color:var(--gold);font-size:13px;line-height:1.5;
 }
-.placeholder span { display: block; font-size: 2rem; }
+.photo .caption-sub{display:block;color:#d59cab;font-size:10px;margin-top:4px}
+.photo-missing{
+  aspect-ratio:3/4;display:grid;place-items:center;
+  padding:12px;text-align:center;color:#f1b9c8;
+  background:radial-gradient(ellipse at top,#65132d,#16070e);
+}
+.photo-missing b{display:block;font-size:30px}
 
-/* Recuerdos */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-  margin: 22px 0;
+/* Tarjetas */
+.memory-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:11px;margin:25px 0;
 }
-.memory {
-  min-height: 125px;
-  padding: 18px;
-  color: var(--white);
-  text-align: left;
-  border: 1px solid #a9385066;
-  border-radius: 15px;
-  background: #350d1d;
+.memory{
+  min-height:145px;padding:17px 13px;text-align:left;
+  color:var(--cream);border:1px solid #b8395c77;
+  border-radius:13px;background:linear-gradient(145deg,#3b0c20,#1a0710);
+  transition:.25s;
 }
-.memory span { display: block; font-size: 1.8rem; }
-.memory small { display: block; color: #edcbd3; margin-top: 7px; }
-.memory.active { background: #711a33; border-color: var(--rose); }
-.message {
-  margin: 20px 0;
-  padding: 20px;
-  border-left: 2px solid var(--red);
-  background: #3a10202b;
+.memory:hover,.memory.active{background:#63132c;border-color:var(--pink);transform:translateY(-2px)}
+.memory .emoji{display:block;font-size:27px;margin-bottom:8px}
+.memory b{color:var(--gold);font-weight:normal}
+.memory small{display:block;color:#d7a6b3;margin-top:7px}
+.message{
+  padding:20px;margin:20px 0;
+  border-left:2px solid var(--hot);
+  background:#390d201f;
+}
+
+/* Carta y poema */
+.letter{
+  font-size:16px;line-height:2;
+}
+.dropcap:first-letter{
+  float:left;font-size:55px;line-height:.95;
+  color:var(--pink);padding:7px 9px 0 0;
+}
+.quote{
+  padding:20px 10px;text-align:center;
+  font-style:italic;color:var(--gold);font-size:1.1rem;
+}
+
+/* Interacción de recuerdos */
+.reveal-card{
+  border:1px solid #bb4865;border-radius:16px;
+  background:linear-gradient(140deg,#471024,#170710);
+  padding:24px;text-align:center;
+}
+.reveal-card .big{font-size:42px}
+.progress-dots{display:flex;gap:7px;justify-content:center;margin:15px 0}
+.progress-dots span{width:7px;height:7px;border-radius:50%;background:#7c3045}
+.progress-dots span.on{background:var(--pink);box-shadow:0 0 10px #ff315d}
+
+/* Noah */
+.paw{
+  font-size:44px;display:block;margin:10px auto;
+  filter:drop-shadow(0 0 10px #ff9caf4d);
 }
 
 /* Cupón */
-.coupon {
-  position: relative;
-  padding: 25px 20px;
-  border: 2px dashed #e65b75;
-  border-radius: 20px;
-  background: linear-gradient(140deg, #4b1022, #1b0911);
-  text-align: center;
-  overflow: hidden;
+.coupon{
+  position:relative;overflow:hidden;text-align:center;
+  border:1px dashed #ff8da5;border-radius:5px;
+  padding:28px 18px;
+  background:
+    radial-gradient(ellipse at 50% 0%,#8e1737 0%,transparent 65%),
+    linear-gradient(145deg,#390c20,#14060d);
 }
-.coupon:before, .coupon:after {
-  content: "♥";
-  position: absolute;
-  top: 8px;
-  color: #ff8ca0;
-  opacity: .5;
+.coupon:before,.coupon:after{
+  content:"";position:absolute;top:50%;width:22px;height:22px;
+  border-radius:50%;background:#10050a;transform:translateY(-50%);
 }
-.coupon:before { left: 10px; }
-.coupon:after { right: 10px; }
-.coupon .date {
-  color: var(--gold);
-  font-size: clamp(1.4rem, 5vw, 2rem);
-  line-height: 1.3;
-  margin: 16px 0;
+.coupon:before{left:-12px}.coupon:after{right:-12px}
+.coupon .date{
+  color:var(--gold);font-size:clamp(22px,6vw,32px);
+  line-height:1.35;margin:22px 0;
 }
-.coupon .time {
-  border-top: 1px solid #a9385066;
-  border-bottom: 1px solid #a9385066;
-  padding: 12px;
-  margin: 16px 0;
+.coupon .details{
+  border-top:1px solid #d44a6b66;border-bottom:1px solid #d44a6b66;
+  padding:15px 5px;margin:20px 0;
 }
-.movie-poster {
-  width: min(330px, 100%);
-  margin: 20px auto;
-  display: block;
-  border-radius: 15px;
-  border: 1px solid #c44a63;
-  box-shadow: 0 12px 35px #0009;
+.stamp{
+  display:inline-block;border:1px solid var(--pink);
+  color:var(--pink);padding:5px 12px;
+  font:10px Arial,sans-serif;letter-spacing:.14em;
+  transform:rotate(-3deg);
 }
-.poster-placeholder {
-  width: min(330px, 100%);
-  min-height: 330px;
-  margin: 20px auto;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 25px;
-  border: 1px solid #b83c56;
-  border-radius: 15px;
-  background: radial-gradient(ellipse at top, #64172c, #13070d 75%);
+.final-question{
+  padding:20px;border:1px solid #7f2742;border-radius:14px;
+  background:#170710;text-align:left;margin-top:22px;
 }
-.final { text-align: center; }
-.footer {
-  text-align: center;
-  padding: 25px 10px 45px;
-  color: #c58e99;
-  font: 12px Arial, sans-serif;
+
+/* Revelación final de película */
+.reveal-movie{
+  border:1px solid #b43c5b;padding:clamp(18px,5vw,35px);
+  border-radius:5px;background:#10050b;
+  box-shadow:0 0 40px #a5123520;
 }
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: #080408ed;
+.movie-poster{
+  display:block;width:min(370px,100%);
+  height:auto;margin:24px auto 12px;
+  border:1px solid #dba3ad;
+  box-shadow:0 15px 45px #000b;
+  border-radius:4px;
 }
-.lightbox.open { display: flex; }
-.lightbox img {
-  max-width: 95%;
-  max-height: 85svh;
-  object-fit: contain;
-  border-radius: 10px;
+.poster-fallback{
+  width:min(370px,100%);min-height:400px;margin:24px auto;
+  display:grid;place-items:center;text-align:center;padding:24px;
+  border:1px solid #c34a68;
+  background:radial-gradient(ellipse at top,#791a37,#10050b 72%);
 }
-.lightbox button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.poster-fallback .bow{font-size:60px}
+.note{font:11px Arial,sans-serif;color:#c99ba7;margin-top:14px}
+
+/* Lightbox y efectos */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:100;
+  align-items:center;justify-content:center;
+  padding:18px;background:#070307f5;
 }
-#hearts {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 60;
+.lightbox.open{display:flex}
+.lightbox img{max-width:95%;max-height:82svh;object-fit:contain}
+.lightbox .close{position:absolute;right:14px;top:14px}
+#effects{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:90}
+.floating{
+  position:absolute;top:-35px;animation:fall linear forwards;
+  filter:drop-shadow(0 0 5px #ff315d77);
 }
-.floating {
-  position: absolute;
-  top: -30px;
-  animation: fall 4s linear forwards;
+@keyframes fall{to{transform:translateY(110vh) rotate(300deg);opacity:0}}
+.footer{text-align:center;padding:35px 8px 55px;color:#ca8e9e;font:10px Arial,sans-serif;letter-spacing:.12em}
+.footer .heart{font-size:24px}
+@media(max-width:480px){
+  .gallery{gap:8px}.photo{padding:5px}
+  .memory-grid{gap:8px}.memory{padding:13px 10px;min-height:135px}
+  .section{border-radius:15px}
+  .letter{font-size:15px}
 }
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-@media (max-width: 480px) {
-  .gallery { gap: 8px; }
-  .section { border-radius: 17px; }
-  .photo { padding: 5px; }
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
 }
 </style>
 </head>
 
 <body>
+<div id="cinemaLights"></div>
+<div id="stars"></div>
+<div id="effects"></div>
+
 <main class="wrap">
 
-  <!-- PORTADA -->
-  <header class="hero">
-    <div class="card center">
-      <div class="kicker">17 de octubre de 2026</div>
-      <div class="heart">♥</div>
-      <h1>Nuestra historia <em>no deja de florecer</em></h1>
-      <p class="sub">
-        Un año de nosotros, de recuerdos, de aprendizajes
-        y de un amor que quiero seguir cuidando.
-        Esta pequeña sorpresa está hecha solo para ti, Valeria.
-      </p>
-      <p class="kicker">
-        JUAN KALETH MENDOZA PRIMERA
-        <br>♡<br>
-        VALERIA PETRO VILLAZÓN
-      </p>
-      <button class="btn" onclick="document.getElementById('carta').scrollIntoView({behavior:'smooth'})">
-        Abrir nuestro regalo ❤️
-      </button>
-    </div>
-  </header>
-
-  <!-- CARTA -->
-  <section class="section" id="carta">
-    <div class="label">Capítulo I · Para ti, mi amor</div>
-    <h2>Un año eligiéndote</h2>
-
-    <p>Mi Valeria hermosa: ❤️</p>
-
-    <p>
-      Hoy, 17 de octubre, celebro que hace un año comenzamos
-      esta historia. No quiero contar solamente los meses:
-      quiero celebrar cada mirada, cada abrazo, cada sonrisa
-      y cada instante que ha ido convirtiendo lo nuestro
-      en algo tan especial para mí.
-    </p>
-
-    <p>
-      No todo ha sido sencillo, pero quiero seguir aprendiendo
-      a escucharte, comprenderte y cuidar lo que compartimos.
-      Quiero que conmigo puedas sentir cariño, respeto,
-      tranquilidad y libertad para ser tú misma.
-    </p>
-
-    <p>
-      Gracias por formar parte de mi vida, por los momentos
-      bonitos y por todos esos pequeños recuerdos que guardo
-      con tanto amor. No sé cómo será cada día del futuro,
-      pero hoy me hace feliz poder celebrarlo contigo.
-    </p>
-
-    <p>
-      Deseo que este nuevo capítulo nos traiga nuevas
-      experiencias, conversaciones sinceras, abrazos largos
-      y muchas razones para sonreír juntos.
-    </p>
-
-    <p class="signature">
-      Feliz primer aniversario, mi niña hermosa.
-      Te quiero muchísimo. ❤️‍🔥
-    </p>
-
-    <div class="divider">♥ ✦ ♥</div>
-  </section>
-
-  <!-- GALERÍA PERSONALIZABLE -->
-  <section class="section">
-    <div class="label">Capítulo II · Mi galería favorita</div>
-    <h2>La niña que hace bonitos mis días</h2>
-
-    <p>
-      Aquí quiero guardar algunas de tus fotos favoritas,
-      porque hay miradas y sonrisas que merecen tener
-      su propio rinconcito en nuestra historia.
-    </p>
-
-    <div class="gallery">
-      <figure class="photo">
-        <img src="IMG-20251126-WA0002.jpg"
-             alt="Foto de mi vida"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="placeholder" style="display:none">
-          </div>
-        <figcaption>Mi sonrisa favorita</figcaption>
-      </figure>
-
-      <figure class="photo">
-        <img src="IMG-20260412-WA0009.jpg"
-             alt="Otra foto de mi princesa"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="placeholder" style="display:none">
-         </div>
-        <figcaption>Mi niña preciosa</figcaption>
-      </figure>
-
-      <figure class="photo">
-        <img src="IMG-20251014-WA0017.jpeg"
-             alt="Foto de los dos"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="placeholder" style="display:none">
-           </div>
-        <figcaption>Un recuerdo nuestro</figcaption>
-      </figure>
-
-      <figure class="photo">
-        <img src="IMG-20250919-WA0008.jpeg"
-             alt="Un recuerdo especial"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <div class="placeholder" style="display:none">
-            </div>
-        <figcaption>Un pedacito de eternidad</figcaption>
-      </figure>
-    </div>
-
-    <p class="signature center">
-      Si pudiera guardar un instante en el bolsillo,
-      elegiría uno en el que estés sonriendo. ❤️
-    </p>
-  </section>
-
-  <!-- RECUERDOS INTERACTIVOS -->
-  <section class="section">
-    <div class="label">Capítulo III · Pequeños tesoros</div>
-    <h2>Abre los regalitos de nuestro amor</h2>
-    <p>Toca cada tarjeta para descubrir un mensaje. 💌</p>
-
-    <div class="grid">
-      <button class="memory"
-        data-title="Tus ojitos"
-        data-message="Hay algo en tu mirada que me hace querer detener el tiempo unos segundos más.">
-        <span>👀</span><b>Tus ojitos</b>
-        <small>Toca para abrir</small>
-      </button>
-
-      <button class="memory"
-        data-title="Tus abrazos"
-        data-message="Mis abrazos favoritos son los tuyos. Siempre quiero disfrutar un poquito más cuando te tengo cerquita.">
-        <span>🫂</span><b>Tus abrazos</b>
-        <small>Toca para abrir</small>
-      </button>
-
-      <button class="memory"
-        data-title="Nuestros momentos"
-        data-message="Hasta un día normal se vuelve especial cuando encuentro una razón para reír contigo.">
-        <span>✨</span><b>Nuestros momentos</b>
-        <small>Toca para abrir</small>
-      </button>
-
-      <button class="memory"
-        data-title="Lo que viene"
-        data-message="Quiero seguir creando recuerdos contigo, sin prisas, respetando nuestros tiempos y disfrutando cada nueva experiencia.">
-        <span>💗</span><b>Lo que viene</b>
-        <small>Toca para abrir</small>
-      </button>
-    </div>
-
-    <div id="memoryMessage" class="message hidden" aria-live="polite">
-      <h3 id="memoryTitle"></h3>
-      <p id="memoryText"></p>
-    </div>
-  </section>
-
-  <!-- NOAH -->
-  <section class="section center">
-    <div class="label">Capítulo IV · Una huellita para siempre</div>
-    <h2>Nuestro pequeño Noah 🐾</h2>
-
-    <p>
-      En nuestra historia también existe un amor pequeñito
-      que dejó huellas enormes. Nuestro hijito Noah siempre
-      tendrá un lugar especial en nuestros recuerdos.
-    </p>
-
-    <p>
-      No tenemos que olvidarlo para seguir sonriendo.
-      Podemos recordarlo con ternura, honrando todo el amor
-      que le dimos y el lugar que siempre tendrá en nuestros
-      corazones.
-    </p>
-
-    <div class="divider">🐾 ♥ 🐾</div>
-
-    <p class="signature">
-      Hay huellitas que se quedan caminando para siempre
-      por el corazón.
-    </p>
-  </section>
-
-  <!-- SORPRESA FINAL -->
-  <section class="section final" id="sorpresa">
-    <div class="label">Capítulo V · Tengo algo que preguntarte</div>
+<!-- PRÓLOGO CINEMATOGRÁFICO -->
+<header class="hero" id="inicio">
+  <div class="hero-card">
+    <div class="kicker">Una producción nacida del corazón</div>
+    <div class="film-number">PELÍCULA N.º 001 · EDICIÓN DE COLECCIÓN</div>
     <div class="heart">♥</div>
-    <h2>Mi amor, todavía queda una sorpresa...</h2>
 
-    <p>
-      Nuestro aniversario no solo merece recordar lo bonito
-      que hemos vivido. También quiero que tengamos nuevas
-      experiencias que algún día podamos recordar con una sonrisa.
+    <h1>Una historia <em>llamada nosotros</em></h1>
+
+    <div class="rule">17 · 10 · 2025</div>
+
+    <p style="max-width:530px;margin:0 auto 25px">
+      Algunas películas duran dos horas.
+      La nuestra está hecha de días, miradas, abrazos,
+      aprendizajes y recuerdos que quiero conservar
+      muchísimo más tiempo.
     </p>
 
-    <p>
-      Por eso preparé un pequeño adelanto de algo que
-      podríamos hacer juntos. Pero antes quiero saber
-      qué piensas tú. 💌
+    <div class="hero-bottom">
+      JUAN KALETH MENDOZA PRIMERA
+      <div style="color:var(--pink);font-size:22px">♡</div>
+      VALERIA PETRO VILLAZÓN
+    </div>
+
+    <p class="film-number" style="margin-top:25px">
+      UNA HISTORIA REAL · UN AMOR IRREPETIBLE
     </p>
 
-    <button class="btn" id="surpriseButton">
-      Descubrir nuestra próxima cita 🎟️
+    <button class="btn gold-btn" id="startButton">
+      ▶ Comenzar nuestra película
     </button>
 
-    <div id="surpriseContent" class="hidden">
-      <div class="divider">♥ ✦ ♥</div>
+    <div class="scroll-hint">TU BUTACA ESTÁ LISTA <span>⌄</span></div>
+  </div>
+</header>
 
-      <h2>¡Tenemos una posible cita pendiente! 🎬</h2>
+<!-- CAPÍTULO 1 -->
+<section class="section" id="carta">
+  <div class="chapter">Escena 01 · El día que empezó todo</div>
+  <h2>Hace un año comenzó mi capítulo favorito</h2>
+
+  <div class="letter">
+    <p>Mi preciosa Valeria: ❤️</p>
+
+    <p class="dropcap">
+      Hoy es 17 de octubre de 2026, y si nuestra historia
+      fuera una película, esta sería una de esas escenas
+      que quisiera volver a ver una y otra vez. No porque
+      todo haya sido perfecto, sino porque entre tantos
+      días distintos hemos construido algo que significa
+      muchísimo para mí: nuestra historia.
+    </p>
+
+    <p>
+      Hace un año comenzamos a salir, sin imaginar cada
+      conversación, cada sonrisa, cada nerviosismo bonito
+      y cada recuerdo que llegaríamos a guardar. Desde
+      aquel 17 de octubre de 2025 hasta esta mañana,
+      hemos escrito páginas que solo nosotros sabemos
+      lo que significan.
+    </p>
+
+    <p>
+      Me encanta que seas tú la persona con quien puedo
+      imaginar nuevos momentos. Me emociona pensar en
+      las veces que todavía nos quedan por reír, en las
+      historias que nos contaremos, en las citas que
+      todavía no hemos vivido y en todos esos pequeños
+      instantes que un día se convertirán en recuerdos.
+    </p>
+
+    <p>
+      También quiero que sepas que no necesito que todos
+      nuestros días sean extraordinarios. A veces me basta
+      con verte, escucharte, saber cómo te encuentras o
+      compartir contigo un ratito de un día cualquiera.
+      Porque para mí lo especial no es solamente el plan:
+      es tener la oportunidad de compartirlo contigo.
+    </p>
+
+    <p>
+      Quiero seguir aprendiendo a comprenderte, respetar
+      tus tiempos, escuchar lo que sientes y acompañarte
+      sin exigirte que siempre estés bien. Deseo que nuestro
+      amor sea un lugar donde ambos podamos expresarnos,
+      respirar, reír y sentirnos queridos tal como somos.
+    </p>
+
+    <p>
+      Gracias por este primer año, por lo bonito que hemos
+      vivido y por los recuerdos que llevas contigo.
+      No puedo prometer que cada escena futura será sencilla,
+      pero sí quiero poner de mi parte para tratarte con
+      cariño, honestidad y respeto.
+    </p>
+
+    <p>
+      Si pudiera volver al principio y contemplar todas las
+      páginas que nos esperaban, elegiría conocerte de nuevo.
+      Porque hoy, después de este primer año, todavía me
+      hace ilusión seguir descubriéndote.
+    </p>
+  </div>
+
+  <div class="quote">
+    “Mi parte favorita de esta historia no es una escena
+    específica: es que tú formas parte de ella”.
+  </div>
+
+  <p class="center signature">
+    Feliz primer aniversario, mi niña hermosa. ❤️‍🔥
+  </p>
+</section>
+
+<!-- CAPÍTULO 2: GALERÍA -->
+<section class="section">
+  <div class="chapter">Escena 02 · Fotogramas que guardo en el alma</div>
+  <h2>Si mi corazón fuera una sala de cine...</h2>
+
+  <p>
+    Estas serían algunas de las imágenes que nunca quitaría
+    de la pantalla. No necesitan filtros ni una historia
+    inventada: su valor está en lo que significan para mí.
+  </p>
+
+  <div class="gallery">
+
+    <figure class="photo">
+      <img src="IMG-20251126-WA0002.jpg"
+           alt="Valeria, una de mis sonrisas favoritas"
+           loading="lazy">
+      <figcaption>
+        Mi sonrisa favorita
+        <span class="caption-sub">Una imagen que me alegra el día</span>
+      </figcaption>
+      <div class="photo-missing hidden">
+        <div><b>♡</b>Coloca aquí tu foto</div>
+      </div>
+    </figure>
+
+    <figure class="photo">
+      <img src="IMG-20260412-WA0009.jpg"
+           alt="Una fotografía especial de Valeria"
+           loading="lazy">
+      <figcaption>
+        Mi niña preciosa
+        <span class="caption-sub">Belleza que va mucho más allá de una foto</span>
+      </figcaption>
+      <div class="photo-missing hidden">
+        <div><b>🌹</b>Coloca aquí tu foto</div>
+      </div>
+    </figure>
+
+    <figure class="photo">
+      <img src="IMG-20251014-WA0017.jpeg"
+           alt="Un recuerdo de los dos"
+           loading="lazy">
+      <figcaption>
+        Un recuerdo nuestro
+        <span class="caption-sub">Dos personas escribiendo una historia</span>
+      </figcaption>
+      <div class="photo-missing hidden">
+        <div><b>💑</b>Coloca aquí tu foto</div>
+      </div>
+    </figure>
+
+    <figure class="photo">
+      <img src="IMG-20250919-WA0008.jpeg"
+           alt="Un recuerdo que quiero conservar"
+           loading="lazy">
+      <figcaption>
+        Un pedacito de eternidad
+        <span class="caption-sub">Hay momentos que merecen quedarse</span>
+      </figcaption>
+      <div class="photo-missing hidden">
+        <div><b>✨</b>Coloca aquí tu foto</div>
+      </div>
+    </figure>
+
+  </div>
+
+  <p class="center muted">
+    Toca una fotografía para verla en grande. ✨
+  </p>
+
+  <div class="rule">♥</div>
+
+  <p class="center serif-italic">
+    Entre millones de imágenes, hay algunas que uno
+    mira y siente que quiere guardarlas para siempre.
+  </p>
+</section>
+
+<!-- CAPÍTULO 3: MÁQUINA DEL TIEMPO -->
+<section class="section">
+  <div class="chapter">Escena 03 · Nuestra pequeña máquina del tiempo</div>
+  <h2>Cuatro ventanas a nuestro amor</h2>
+  <p>
+    Toca cada recuerdo. Hay palabras pequeñas que guardan
+    sentimientos enormes. 💌
+  </p>
+
+  <div class="memory-grid">
+    <button class="memory"
+      data-title="La primera página"
+      data-text="El 17 de octubre de 2025 empezó esta etapa de nuestra historia. Me gusta pensar que aquel día no teníamos que conocer todas las páginas que venían: bastaba con empezar a escribirlas.">
+      <span class="emoji">🎞️</span>
+      <b>El comienzo</b>
+      <small>17 de octubre de 2025</small>
+    </button>
+
+    <button class="memory"
+      data-title="Los pequeños detalles"
+      data-text="A veces el amor se esconde en algo sencillo: una conversación, una mirada, un saludo esperado o un momento breve que termina siendo la parte favorita del día.">
+      <span class="emoji">🌹</span>
+      <b>Lo cotidiano</b>
+      <small>Las escenas que más valen</small>
+    </button>
+
+    <button class="memory"
+      data-title="Aprender juntos"
+      data-text="No somos una película perfecta y no necesitamos serlo. Podemos aprender, escucharnos, reconocer nuestros errores y tratarnos con el cariño que ambos merecemos.">
+      <span class="emoji">🕊️</span>
+      <b>Nuestro aprendizaje</b>
+      <small>Crecer sin dejar de cuidarnos</small>
+    </button>
+
+    <button class="memory"
+      data-title="Todavía hay muchas escenas"
+      data-text="Quedan lugares por visitar, películas por ver, fotografías por tomar y conversaciones por compartir. Me emociona descubrir poco a poco lo que todavía podemos vivir.">
+      <span class="emoji">🌌</span>
+      <b>Lo que viene</b>
+      <small>El siguiente capítulo</small>
+    </button>
+  </div>
+
+  <div id="memoryMessage" class="message hidden" aria-live="polite">
+    <h3 id="memoryTitle"></h3>
+    <p id="memoryText"></p>
+  </div>
+</section>
+
+<!-- CAPÍTULO 4: CÁPSULA DEL FUTURO -->
+<section class="section center">
+  <div class="chapter">Escena 04 · Una carta para el futuro</div>
+  <div style="font-size:42px">💌</div>
+  <h2>Para nosotros, cuando pase el tiempo</h2>
+
+  <p>
+    Si algún día volvemos a abrir esta página, deseo que
+    podamos sonreír al recordar cómo éramos en este primer
+    aniversario. Que podamos mirar estas fotografías y
+    acordarnos de las personas que éramos, de lo que nos
+    ilusionaba y de lo que estábamos aprendiendo.
+  </p>
+
+  <p>
+    Ojalá sigamos encontrando motivos para compartir
+    experiencias, hablar con sinceridad y celebrar las
+    pequeñas cosas. Que no se nos olvide que los momentos
+    bonitos no siempre tienen que ser grandes ni costosos.
+  </p>
+
+  <div class="reveal-card">
+    <div class="big">🔐</div>
+    <h3>Una promesa para cuidar</h3>
+    <p id="futureText">
+      Hay una frase escondida aquí, esperando a que la abras.
+    </p>
+    <button class="btn secondary" id="futureButton">
+      Abrir nuestra cápsula
+    </button>
+  </div>
+</section>
+
+<!-- CAPÍTULO 5: NOAH -->
+<section class="section center">
+  <div class="chapter">Escena 05 · Una huellita que permanece</div>
+  <span class="paw">🐾</span>
+  <h2>Nuestro hijito Noah</h2>
+
+  <p>
+    En nuestra historia hay una huellita que merece un lugar
+    especial. Nuestro hermoso hijito Noah nos regaló cariño
+    y recuerdos que siguen siendo importantes.
+  </p>
+
+  <p>
+    Aunque nos duela que ya no esté físicamente, el amor
+    que sentimos por él no desaparece. Podemos recordarlo
+    con ternura, hablar de él y conservar todo lo bonito
+    que dejó en nuestros corazones.
+  </p>
+
+  <p>
+    Me gusta imaginar que su recuerdo nos acompaña como una
+    pequeña estrella: no para borrar la tristeza, sino para
+    recordarnos que haberlo amado fue algo precioso.
+  </p>
+
+  <div class="rule">🐾 ♥ 🐾</div>
+
+  <p class="serif-italic">
+    Nuestro hijito Noah siempre tendrá su rinconcito
+    en la historia que compartimos.
+  </p>
+</section>
+
+<!-- CAPÍTULO 6: INVITACIÓN -->
+<section class="section center" id="invitacion">
+  <div class="chapter">Escena 06 · Una fecha que quiero compartir contigo</div>
+  <div class="heart">♥</div>
+  <h2>Mi amor, ¿hacemos un nuevo recuerdo?</h2>
+
+  <p>
+    Nuestro primer aniversario también me hace pensar en
+    todas las experiencias bonitas que todavía podemos
+    compartir. Por eso quiero proponerte una salida especial.
+  </p>
+
+  <p>
+    Hay una película que sé que tienes ganas de ver y pensé
+    que podría ser una oportunidad preciosa para pasar
+    otra tarde juntos. Pero no quiero decidirlo por ti:
+    quiero saber si te hace ilusión.
+  </p>
+
+  <button class="btn gold-btn" id="invitationButton">
+    Abrir tu invitación especial 🎟️
+  </button>
+
+  <div id="invitationContent" class="hidden">
+    <div class="rule">♥ ✦ ♥</div>
+
+    <div class="coupon">
+      <div class="stamp">INVITACIÓN ESPECIAL</div>
+
+      <h2 style="margin-top:24px">Una cita contigo</h2>
+
+      <p class="kicker">RESERVADA PARA DOS CORAZONES</p>
+
+      <div class="date">
+        MIÉRCOLES<br>
+        18 DE NOVIEMBRE DE 2026
+      </div>
+
+      <div class="details">
+        <p>🎬 <strong>Plan:</strong> Una tarde de cine juntos.</p>
+        <p>📍 <strong>Lugar:</strong> C.C. Viva o Portal del Prado.</p>
+        <p>🕰️ <strong>Hora:</strong> La elegimos juntos.</p>
+      </div>
 
       <p>
-        Mi niña, me acuerdo de que quieres ver
-        <strong>Los juegos del hambre: Amanecer en la cosecha</strong>.
-        Y como sé que te hace ilusión, pensé en que
-        podríamos ir a verla juntos.
+        Este cupón incluye una salida contigo, tiempo
+        para disfrutar juntos y la posibilidad de crear
+        otro recuerdo bonito de nuestra historia.
       </p>
 
-      <!-- Sube el póster oficial al repositorio con este nombre -->
-      <img class="movie-poster"
-           src="Screenshot_20261016_121133_com_opera_browser_BrowserActivity_edit_930325712050419.jpg"
-           alt="Póster de Los juegos del hambre: Amanecer en la cosecha"
-           onerror="this.style.display='none';document.getElementById('posterFallback').style.display='grid'">
+      <p class="pink">
+        La película y las entradas quedan pendientes
+        de que me cuentes qué te parece el plan. ❤️
+      </p>
+    </div>
 
-      <div class="poster-placeholder" id="posterFallback" style="display:none">
-        <div>
-          <div style="font-size:3rem">🎬 🏹</div>
-          <h3>Los juegos del hambre</h3>
-          <p><strong>Amanecer en la cosecha</strong></p>
-          <p>¡Nuestra posible próxima aventura!</p>
-          <small>Coloca aquí el póster de la película.</small>
-        </div>
-      </div>
+    <div class="final-question">
+      <h3>Antes de comprar las entradas, quiero saber algo…</h3>
 
-      <!-- CUPÓN DE CITA -->
-      <div class="coupon">
-        <div class="kicker">Cupón oficial de nuestra próxima cita</div>
-        <h2 style="margin-bottom:5px">Una salida contigo ❤️</h2>
+      <p>
+        Mi Valeria hermosa, sé que quieres ver
+        <strong>Los juegos del hambre: Amanecer en la cosecha</strong>,
+        y como ya está en preventa, me gustaría comprar
+        las boletas para que podamos verla juntos.
+      </p>
 
-        <div class="date">
-          MIÉRCOLES<br>
-          18 DE NOVIEMBRE DE 2026
-        </div>
+      <p>
+        Estaba pensando en el miércoles 18 de noviembre.
+        Podemos mirar qué cine nos conviene más y elegir
+        una función que nos quede bien a los dos.
+      </p>
 
-        <div class="time">
-          <p><strong>Hora:</strong> La elegimos juntos.</p>
-          <p><strong>Lugar:</strong> El cine, C.C viva o portal del Prado, el que prefieras.</p>
-        </div>
-
-        <p>
-          <strong>Este cupón incluye:</strong><br>
-          Una cita contigo, tiempo juntos y un recuerdo
-          nuevo para nuestra historia.
-        </p>
-
-        <p style="color:var(--rose);font-style:italic">
-          Entradas pendientes de tu opinión. 💌
-        </p>
-      </div>
-
-      <div class="message" style="text-align:left;margin-top:24px">
-        <h3>Pero primero quiero preguntarte algo…</h3>
-        <p>
-          Amor, sé que la película ya está en preventa y me
-          gustaría comprar las entradas para que podamos ir.
-          Pero quiero conocer tu opinión antes de hacerlo.
-        </p>
-        <p>
-          ¿Te gustaría que fuéramos el miércoles 18 de noviembre?
-          Podemos ponernos de acuerdo con la hora y revisar
-          juntos qué función nos viene mejor.
-        </p>
-        <p>
-          No quiero decidirlo todo por ti: quiero que este
-          plan también te haga ilusión a ti. ❤️
-        </p>
-      </div>
+      <p>
+        Pero primero quiero conocer tu opinión. No quiero
+        comprar nada sin saber si te gusta la idea y si
+        esa fecha te viene bien. Lo bonito para mí es que
+        podamos organizarlo juntos.
+      </p>
 
       <div class="center">
         <button class="btn" id="yesButton">
-          ¡Me encantaría ir contigo! ❤️
+          ¡Sí, quiero ir contigo! ❤️
         </button>
+
         <button class="btn secondary" id="talkButton">
-          Hablemos del plan 💌
+          Hablemos de la fecha 💌
         </button>
       </div>
 
-      <div class="message hidden" id="response" aria-live="polite">
+      <div id="response" class="message hidden" aria-live="polite">
         <h3 id="responseTitle"></h3>
         <p id="responseText"></p>
       </div>
 
       <p class="note">
-        Estos botones muestran un mensaje en esta página;
-        no envían respuestas a Juan automáticamente.
+        Estos botones solo muestran mensajes en esta página.
+        No envían una respuesta a Juan ni compran entradas.
       </p>
     </div>
-  </section>
 
-  <!-- DESPEDIDA -->
-  <section class="section center">
-    <div class="heart">♥</div>
-    <h2>Feliz primer aniversario, Valeria</h2>
-    <p>
-      Gracias por este primer capítulo de nuestra historia.
-      Ojalá sigamos sumando momentos bonitos, aprendiendo
-      el uno del otro y construyendo recuerdos que nos
-      hagan sonreír con el paso del tiempo.
-    </p>
-    <p class="signature">
-      De Juan para su Valeria,<br>
-      con muchísimo amor. ❤️‍🔥
-    </p>
-    <button class="btn" id="heartButton">
-      Llenar la pantalla de corazones
-    </button>
-  </section>
+    <!-- REVELACIÓN FINAL: EL PÓSTER VA AL FINAL -->
+    <div class="reveal-movie" style="margin-top:32px">
+      <div class="chapter">Escena final · La sorpresa que guardé para ti</div>
+      <h2>¿Lista para descubrir nuestra película?</h2>
+
+      <p>
+        Hay una última imagen que reservé para el final.
+        Si este plan te hace ilusión, toca el botón
+        y descubre cuál podría ser nuestra próxima aventura.
+      </p>
+
+      <button class="btn gold-btn" id="movieButton">
+        🎬 Revelar la película sorpresa
+      </button>
+
+      <div id="movieReveal" class="hidden">
+        <div class="rule">♥ ✦ ♥</div>
+
+        <h2>¡Amanecer en la cosecha! 🏹</h2>
+
+        <p>
+          Mi niña, esta es la película que me hizo pensar
+          en nuestra próxima salida:
+          <strong>Los juegos del hambre: Amanecer en la cosecha</strong>.
+        </p>
+
+        <p>
+          Me encantaría verla contigo, compartir esa tarde
+          y salir del cine con un nuevo recuerdo nuestro.
+          Primero quiero saber si tú también quieres
+          que hagamos este plan. ❤️
+        </p>
+
+        <!-- Imagen final de Royale Films: conserva este nombre de archivo -->
+        <img
+          class="movie-poster"
+          src="Screenshot_20261016_121133_com_opera_browser_BrowserActivity_edit_930325712050419.jpg"
+          alt="Imagen de Los juegos del hambre: Amanecer en la cosecha, de la página de Royale Films"
+          loading="lazy"
+          onerror="this.style.display='none';document.getElementById('posterFallback').classList.remove('hidden')">
+
+        <div class="poster-fallback hidden" id="posterFallback">
+          <div>
+            <div class="bow">🏹</div>
+            <div class="kicker">Nuestra próxima aventura</div>
+            <h2>Los juegos del hambre</h2>
+            <p class="gold">Amanecer en la cosecha</p>
+            <p>Coloca la captura de Royale Films en el repositorio con el nombre de archivo indicado en el código.</p>
+          </div>
+        </div>
+
+        <p class="note center">
+          La imagen aparece al final de la sorpresa.
+          Las entradas todavía no están compradas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EPÍLOGO -->
+<section class="section center">
+  <div class="chapter">Créditos finales · Pero no el final de nosotros</div>
+  <div class="heart">♥</div>
+  <h2>Feliz primer aniversario, Valeria</h2>
+
+  <p>
+    Gracias por ser parte de este primer año de nuestra
+    historia. Gracias por cada momento que se convirtió
+    en un recuerdo y por todo lo que todavía podemos
+    descubrir, paso a paso.
+  </p>
+
+  <p>
+    Si nuestra historia fuera una película, no necesitaría
+    un final perfecto. Me bastaría con que cada nueva escena
+    tuviera cariño, respeto, sinceridad y motivos para
+    volver a sonreír.
+  </p>
+
+  <p class="serif-italic">
+    De Juan para su Valeria.<br>
+    Con todo mi amor. ❤️‍🔥
+  </p>
+
+  <button class="btn" id="heartButton">
+    Llenar nuestra pantalla de amor 💗
+  </button>
+
+  <button class="btn secondary" id="topButton">
+    Volver al comienzo ↑
+  </button>
+</section>
 
 </main>
 
 <footer class="footer">
-  ♥ Hecho con amor para Valeria ♥<br>
-  Nuestra historia continúa...
+  <div class="heart">♥</div>
+  UNA HISTORIA · DOS CORAZONES · MUCHOS RECUERDOS
+  <p>JUAN KALETH MENDOZA PRIMERA ♡ VALERIA PETRO VILLAZÓN</p>
+  <p>Desde el 17 de octubre de 2025 · Nuestro primer aniversario</p>
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <button class="btn" id="closeLightbox">Cerrar ✕</button>
+<!-- VISOR DE FOTOGRAFÍAS -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+  <button class="btn close" id="closeLightbox">Cerrar ✕</button>
   <img id="lightboxImage" src="" alt="Fotografía ampliada">
 </div>
-<div id="hearts"></div>
 
 <script>
-// Tarjetas de recuerdos
-document.querySelectorAll(".memory").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".memory").forEach(item => {
-      item.classList.remove("active");
-    });
+// Navegación cinematográfica
+document.getElementById("startButton").addEventListener("click",()=>{
+  document.getElementById("carta").scrollIntoView({behavior:"smooth"});
+  burstHearts(12);
+});
 
+document.getElementById("topButton").addEventListener("click",()=>{
+  document.getElementById("inicio").scrollIntoView({behavior:"smooth"});
+});
+
+// Tarjetas de recuerdos
+document.querySelectorAll(".memory").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".memory").forEach(item=>item.classList.remove("active"));
     button.classList.add("active");
-    document.getElementById("memoryTitle").textContent =
-      button.dataset.title;
-    document.getElementById("memoryText").textContent =
-      button.dataset.message;
+    document.getElementById("memoryTitle").textContent=button.dataset.title;
+    document.getElementById("memoryText").textContent=button.dataset.text;
     document.getElementById("memoryMessage").classList.remove("hidden");
   });
 });
 
-// Revelar la sorpresa final
-document.getElementById("surpriseButton").addEventListener("click", () => {
-  document.getElementById("surpriseContent").classList.remove("hidden");
-  document.getElementById("surpriseButton").classList.add("hidden");
-  document.getElementById("surpriseContent").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+// Cápsula del futuro
+let futureOpened=false;
+document.getElementById("futureButton").addEventListener("click",()=>{
+  const text=document.getElementById("futureText");
+  const button=document.getElementById("futureButton");
+
+  if(!futureOpened){
+    text.textContent="Que nunca olvidemos que amar también es escuchar, cuidar, respetar nuestros tiempos y elegir compartir los días desde la libertad y el cariño.";
+    button.textContent="Guardar estas palabras ❤️";
+    futureOpened=true;
+    burstHearts(8);
+  }else{
+    text.textContent="Esta frase queda como un pequeño recordatorio de lo que deseamos cuidar en nuestra historia.";
+    button.textContent="Leer de nuevo";
+  }
 });
 
-// Respuestas simbólicas: no se envían fuera del navegador
-function showResponse(title, text) {
-  document.getElementById("responseTitle").textContent = title;
-  document.getElementById("responseText").textContent = text;
+// Invitación
+document.getElementById("invitationButton").addEventListener("click",()=>{
+  document.getElementById("invitationContent").classList.remove("hidden");
+  document.getElementById("invitationButton").classList.add("hidden");
+  document.getElementById("invitationContent").scrollIntoView({behavior:"smooth",block:"start"});
+  burstHearts(12);
+});
+
+// Respuestas de la invitación
+function showResponse(title,text){
+  document.getElementById("responseTitle").textContent=title;
+  document.getElementById("responseText").textContent=text;
   document.getElementById("response").classList.remove("hidden");
-  document.getElementById("response").scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
 }
-
-document.getElementById("yesButton").addEventListener("click", () => {
+document.getElementById("yesButton").addEventListener("click",()=>{
   showResponse(
-    "¡Entonces tenemos que organizarlo! 🎬❤️",
-    "Me hace mucha ilusión que te guste la idea. Ahora podemos elegir la hora y revisar juntos las entradas antes de comprarlas. ¡Quiero que disfrutemos nuestra cita!"
+    "¡Entonces vamos a organizar nuestra cita! 🎬❤️",
+    "Me alegra que te guste la idea. Ahora podemos mirar juntos las funciones, elegir la hora y confirmar los detalles antes de comprar las entradas."
+  );
+  burstHearts(20);
+});
+document.getElementById("talkButton").addEventListener("click",()=>{
+  showResponse(
+    "Lo elegimos juntos, mi amor 💌",
+    "Podemos hablar de la fecha, la hora y el cine que más nos convenga. Quiero que sea un plan que te ilusione y que podamos disfrutar tranquilos."
   );
 });
 
-document.getElementById("talkButton").addEventListener("click", () => {
-  showResponse(
-    "Lo más importante es decidirlo juntos 💌",
-    "Podemos hablar de la fecha, la hora, el cine y las entradas. Quiero saber qué te viene mejor y qué te hace ilusión."
-  );
+// Revelación de la película: siempre después de la invitación
+document.getElementById("movieButton").addEventListener("click",()=>{
+  document.getElementById("movieReveal").classList.remove("hidden");
+  document.getElementById("movieButton").classList.add("hidden");
+  document.getElementById("movieReveal").scrollIntoView({behavior:"smooth",block:"start"});
+  burstHearts(26);
 });
 
-// Ampliar las fotografías al tocarlas
-document.querySelectorAll(".photo img").forEach(img => {
-  img.addEventListener("click", () => {
-    if (!img.complete || img.naturalWidth === 0) return;
-    document.getElementById("lightboxImage").src = img.src;
-    document.getElementById("lightbox").classList.add("open");
+// Galería: ampliación de fotos
+const lightbox=document.getElementById("lightbox");
+document.querySelectorAll(".photo img").forEach(img=>{
+  img.addEventListener("error",()=>{
+    img.classList.add("hidden");
+    const placeholder=img.parentElement.querySelector(".photo-missing");
+    if(placeholder)placeholder.classList.remove("hidden");
+  });
+
+  img.addEventListener("click",()=>{
+    if(!img.complete||img.naturalWidth===0)return;
+    document.getElementById("lightboxImage").src=img.src;
+    lightbox.classList.add("open");
   });
 });
-
-document.getElementById("closeLightbox").addEventListener("click", () => {
-  document.getElementById("lightbox").classList.remove("open");
+function closeLightbox(){
+  lightbox.classList.remove("open");
+  document.getElementById("lightboxImage").src="";
+}
+document.getElementById("closeLightbox").addEventListener("click",closeLightbox);
+lightbox.addEventListener("click",event=>{
+  if(event.target===lightbox)closeLightbox();
+});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape")closeLightbox();
 });
 
-document.getElementById("lightbox").addEventListener("click", event => {
-  if (event.target.id === "lightbox") {
-    event.currentTarget.classList.remove("open");
+// Lluvia de corazones y pequeñas estrellas
+function burstHearts(count){
+  const holder=document.getElementById("effects");
+  const symbols=["❤️","💗","💖","💕","♥","✨","🌹","🐾"];
+  for(let i=0;i<count;i++){
+    const item=document.createElement("span");
+    item.className="floating";
+    item.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    item.style.left=Math.random()*100+"%";
+    item.style.fontSize=(15+Math.random()*18)+"px";
+    item.style.animationDuration=(2.7+Math.random()*2.3)+"s";
+    item.style.animationDelay=(Math.random()*.8)+"s";
+    holder.appendChild(item);
+    setTimeout(()=>item.remove(),6000);
   }
-});
-
-// Lluvia de corazones
-document.getElementById("heartButton").addEventListener("click", () => {
-  const holder = document.getElementById("hearts");
-  const symbols = ["❤️","💗","💖","💕","♥","🐾"];
-
-  for (let i = 0; i < 45; i++) {
-    const heart = document.createElement("span");
-    heart.className = "floating";
-    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.animationDelay = Math.random() * 1.5 + "s";
-    heart.style.animationDuration = 2.5 + Math.random() * 2 + "s";
-    holder.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-  }
+}
+document.getElementById("heartButton").addEventListener("click",()=>{
+  burstHearts(65);
 });
 </script>
-
 </body>
 </html>
